@@ -6,11 +6,12 @@ public class ReverseNumber {
         int reverse = 0;
 
         while (num != 0) {
-            int digit = num % 10;      // get last digit
-            reverse = reverse * 10 + digit; // build reversed number
-            num = num / 10;           // remove last digit
+            int digit = num % 10;     
+            reverse = reverse * 10 + digit; 
+            num = num / 10;           
         }
 
         System.out.println("Reversed number: " + reverse);
     }
 }
+
