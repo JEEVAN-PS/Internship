@@ -11,13 +11,11 @@ class Point {
 
 public class SquareCheck {
 
-    // Function to calculate square of distance
     static int distSq(Point a, Point b) {
         return (a.x - b.x) * (a.x - b.x) +
                (a.y - b.y) * (a.y - b.y);
     }
 
-    // Function to check square
     static boolean isSquare(Point p1, Point p2, Point p3, Point p4) {
 
         int[] d = new int[6];
@@ -31,8 +29,6 @@ public class SquareCheck {
 
         Arrays.sort(d);
 
-        // First 4 distances should be same (sides)
-        // Last 2 should be same (diagonals)
         return d[0] > 0 &&
                d[0] == d[1] &&
                d[1] == d[2] &&
