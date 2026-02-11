@@ -22,7 +22,8 @@ public class Main {
 
         s1.name = "Jeevan";
         s1.age = 21;
-        s1.cgpa = 8.3;
+        s1.cgpa = 8.3f;
         s1.display();
     }
 }
+
