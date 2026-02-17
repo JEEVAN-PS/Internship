@@ -22,7 +22,7 @@ public class StudentGrade {
                 grade = 'A';
             else if(marks[i] >= 75)
                 grade = 'B';
-            else if(marks[i] >= 50)
+            else if(marks[i] >= 36)
                 grade = 'C';
             else
                 grade = 'F';
@@ -36,3 +36,4 @@ public class StudentGrade {
         sc.close();
     }
 }
+
