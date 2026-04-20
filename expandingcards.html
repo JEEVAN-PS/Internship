@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Auto + Hover Expanding Cards</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  flex: 0.5;
+  height: 80vh;
+  margin: 10px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.panel h3 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Active card */
+.panel.active {
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="panel active" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70');">
+    <h3>Car</h3>
+  </div>
+
+  <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc');">
+    <h3>Bike</h3>
+  </div>
+
+  <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511');">
+    <h3>Traditional Home</h3>
+  </div>
+
+  <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');">
+    <h3>Niagara Falls</h3>
+  </div>
+
+  <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1474487548417-781cb71495f3');">
+    <h3>Train</h3>
+  </div>
+</div>
+
+<script>
+const panels = document.querySelectorAll('.panel');
+let current = 0;
+let interval;
+
+// Set active panel
+function setActive(index) {
+  panels.forEach(p => p.classList.remove('active'));
+  panels[index].classList.add('active');
+}
+
+// Auto slide function
+function startAutoSlide() {
+  interval = setInterval(() => {
+    current++;
+    if (current >= panels.length) current = 0;
+    setActive(current);
+  }, 3000);
+}
+
+// Stop auto slide
+function stopAutoSlide() {
+  clearInterval(interval);
+}
+
+// Hover events
+panels.forEach((panel, index) => {
+  panel.addEventListener('mouseenter', () => {
+    stopAutoSlide();
+    current = index;
+    setActive(index);
+  });
+
+  panel.addEventListener('mouseleave', () => {
+    startAutoSlide();
+  });
+});
+
+// Start initially
+startAutoSlide();
+</script>
+
+</body>
+</html>
